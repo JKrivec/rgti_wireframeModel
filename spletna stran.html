@@ -2,24 +2,28 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <script type="text/javascript" src="./cevovod.js"></script>
 </head>
 
 <body>
 
     <h1>Hi, to see the magic,please upload a file</h1>
 
-    <input id="datoteka" type="file" >
+    <input id="datoteka" type="file" onchange="naloziDatoteko()">
     <br>
-    <button onclick="naloziDatoteko()">začni!</button>
+    <button onclick="izris()">izriši!</button>
+    <button onclick="rotateX(0.01); izris();">rotateX</button>
+    <button onclick="rotateY(0.1); izris();">rotateY</button>
+    <button onclick="rotateZ(0.1); izris();">rotateZ</button>
+    <button onclick="izracunajSredinskoTocko()">izracunaj Sredino!</button>
+   
 
     <div class="canvas">
-            <canvas class="canvas" id="myCanvas" width="720" height="480" style="border:1px solid #000000;"></canvas>
+            <canvas class="canvas" id="platno" width="1280" height="720" style="border:1px solid #000000;"></canvas>
     </div>
 
     <h1 id="text"></h1>
     <h1 id="text2"></h1>
-
+    <script type="text/javascript" src="./cevovod.js"></script>
 </body>
 
 </html>
