@@ -10,11 +10,27 @@
 
     <input id="datoteka" type="file" onchange="naloziDatoteko()">
     <br>
-    <button onclick="izris()">izriši!</button>
-    <button onclick="rotateX(0.01); izris();">rotateX</button>
+    <button onclick="rotateX(0.1); izris();">rotateX</button>
     <button onclick="rotateY(0.1); izris();">rotateY</button>
     <button onclick="rotateZ(0.1); izris();">rotateZ</button>
-    <button onclick="izracunajSredinskoTocko()">izracunaj Sredino!</button>
+    <button onclick="toggleRotate(true,false,false); toggleButtonColor();">toggle rotationX</button>
+    <button onclick="toggleRotate(false,true,false); toggleButtonColor();">toggle rotationY</button>
+    <button onclick="toggleRotate(false,false,true); toggleButtonColor();">toggle rotationZ</button>
+    <br>
+    <button onclick="scale(1.1,1.1,1.1);izris();">poblizaj</button>
+    <button onclick="scale(0.9,0.9,0.9);izris();">zmanjsaj</button>
+    <br>
+    <button onclick="translate1(1,0,0);izris();">gor</button>
+    <button onclick="translate1(-1,0,0);izris();">dol</button>
+    <br>
+    <button onclick="translate1(0,-1,0);izris();">levo</button>
+    <button onclick="translate1(0,1,0);izris();">desno</button>
+    <br>
+    <button onclick="translate1(0,0,1);izris();">naprej</button>
+    <button onclick="translate1(0,0,-1);izris();">nazaj</button>
+    
+    
+
    
 
     <div class="canvas">
