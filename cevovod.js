@@ -1,6 +1,6 @@
 var vozlisca3d = [];
 var povezave3d = [];
-var razdaljaKamere = 50;
+var razdaljaKamere = 50000;
 var platno = document.getElementById("platno")
 var context = platno.getContext("2d");
 var sredinskaTocka = [];
@@ -61,8 +61,9 @@ function izracunajSredinskoTocko(){
 
 
 var refreshId = setInterval(function(){
-    rotateY(0.01);
+    rotateZ(0.01);
     rotateX(0.01);
+    //rotateY(0.01);
     izris();
 
 }, 15);
@@ -86,8 +87,8 @@ function rotateY(kot){
         var x = vozlisca3d[i][0];
         var y = vozlisca3d[i][1];
         var z = vozlisca3d[i][2];
-        vozlisca3d[i][0] = z*Math.cos(kot) - x*Math.sin(kot);
-        vozlisca3d[i][2] = z*Math.sin(kot) + x*Math.cos(kot);
+        vozlisca3d[i][2] = z*Math.cos(kot) - x*Math.sin(kot);
+        vozlisca3d[i][0] = z*Math.sin(kot) + x*Math.cos(kot);
     }
 }
 function rotateZ(kot){
@@ -113,6 +114,8 @@ function izris(){
         var x = vozlisca3d[stVozlisc][0];
         var y = vozlisca3d[stVozlisc][1];
         var z = vozlisca3d[stVozlisc][2];
+        var scale = razdaljaKamere / (razdaljaKamere + z);
+        /*
         if(z == 0){
             vozlisca2d[stVozlisc][0] = x * razdaljaKamere;
             vozlisca2d[stVozlisc][1] = y * razdaljaKamere;
@@ -124,21 +127,24 @@ function izris(){
             vozlisca2d[stVozlisc][1] = y * (razdaljaKamere/z);  
             //console.log("2d y= " +vozlisca2d[stVozlisc][1]); 
         }
-        
+        */
+
+        vozlisca2d[stVozlisc][0] = x * scale;
+        vozlisca2d[stVozlisc][1] = y * scale;
         stVozlisc++;
     }
 
     //risanje
     context.beginPath();
     for(var i = 0; i < povezave3d.length; i++){
-        context.moveTo(vozlisca2d[povezave3d[i][0]-1][0] +odmikX , -vozlisca2d[povezave3d[i][0]-1][1]+odmikY );
-        context.lineTo(vozlisca2d[povezave3d[i][1]-1][0] +odmikX , -vozlisca2d[povezave3d[i][1]-1][1]+odmikY );
+        context.moveTo(vozlisca2d[povezave3d[i][0]-1][0]*100 +odmikX , -vozlisca2d[povezave3d[i][0]-1][1]*100+odmikY );
+        context.lineTo(vozlisca2d[povezave3d[i][1]-1][0]*100 +odmikX , -vozlisca2d[povezave3d[i][1]-1][1]*100+odmikY );
        
-        context.moveTo(vozlisca2d[povezave3d[i][1]-1][0] +odmikX , -vozlisca2d[povezave3d[i][1]-1][1]+odmikY );
-        context.lineTo(vozlisca2d[povezave3d[i][2]-1][0] +odmikX , -vozlisca2d[povezave3d[i][2]-1][1]+odmikY );
+        context.moveTo(vozlisca2d[povezave3d[i][1]-1][0]*100 +odmikX , -vozlisca2d[povezave3d[i][1]-1][1]*100+odmikY );
+        context.lineTo(vozlisca2d[povezave3d[i][2]-1][0]*100 +odmikX , -vozlisca2d[povezave3d[i][2]-1][1]*100+odmikY );
         
-        context.moveTo(vozlisca2d[povezave3d[i][2]-1][0] +odmikX , -vozlisca2d[povezave3d[i][2]-1][1]+odmikY );
-        context.lineTo(vozlisca2d[povezave3d[i][0]-1][0] +odmikX , -vozlisca2d[povezave3d[i][0]-1][1]+odmikY );
+        context.moveTo(vozlisca2d[povezave3d[i][2]-1][0]*100 +odmikX , -vozlisca2d[povezave3d[i][2]-1][1]*100+odmikY );
+        context.lineTo(vozlisca2d[povezave3d[i][0]-1][0]*100 +odmikX , -vozlisca2d[povezave3d[i][0]-1][1]*100+odmikY );
         
        
     }
