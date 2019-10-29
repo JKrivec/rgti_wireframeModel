@@ -10,35 +10,48 @@
 
     <input id="datoteka" type="file" onchange="naloziDatoteko()">
     <br>
-    <button onclick="rotateX(0.1); izris();">rotateX</button>
-    <button onclick="rotateY(0.1); izris();">rotateY</button>
-    <button onclick="rotateZ(0.1); izris();">rotateZ</button>
-    <button onclick="toggleRotate(true,false,false); toggleButtonColor();">toggle rotationX</button>
-    <button onclick="toggleRotate(false,true,false); toggleButtonColor();">toggle rotationY</button>
-    <button onclick="toggleRotate(false,false,true); toggleButtonColor();">toggle rotationZ</button>
-    <br>
-    <button onclick="scale(1.1,1.1,1.1);izris();">poblizaj</button>
-    <button onclick="scale(0.9,0.9,0.9);izris();">zmanjsaj</button>
-    <br>
-    <button onclick="translate1(1,0,0);izris();">gor</button>
-    <button onclick="translate1(-1,0,0);izris();">dol</button>
-    <br>
-    <button onclick="translate1(0,-1,0);izris();">levo</button>
-    <button onclick="translate1(0,1,0);izris();">desno</button>
-    <br>
-    <button onclick="translate1(0,0,1);izris();">naprej</button>
-    <button onclick="translate1(0,0,-1);izris();">nazaj</button>
     
+    <div style="position: relative;float: right; width: 40%;">
+        <h3>rotacije :</h3>
+        
+        <button onclick="rotateX(0.1); izris();">rotateX</button>
+        <button onclick="rotateY(0.1); izris();">rotateY</button>
+        <button onclick="rotateZ(0.1); izris();">rotateZ</button>
+        <button onclick="toggleRotate(true,false,false);izris();">toggle rotationX</button>
+        <button onclick="toggleRotate(false,true,false);izris();">toggle rotationY</button>
+        <button onclick="toggleRotate(false,false,true);izris();">toggle rotationZ</button>
+
+        <h3>perspektiva :</h3>
+        
+        <button onclick="perspective(2);izris();">razdalja Kamere++</button>
+        <button onclick="perspective(-2);izris();">razdalja Kamere--</button>
     
-
-   
-
-    <div class="canvas">
-            <canvas class="canvas" id="platno" width="1280" height="720" style="border:1px solid #000000;"></canvas>
+        <h3>skaliranje :</h3>
+        
+        <button onclick="scale(1.1,1.1,1.1);izris();">poblizaj</button>
+        <button onclick="scale(0.9,0.9,0.9);izris();">zmanjsaj</button>
+        <button onclick="scale(1.1,1,1);izris();">scale X</button>
+        <button onclick="scale(1,1.1,1);izris();">scale Y</button>
+        <button onclick="scale(1,1,1.1);izris();">scale Z</button>
+        <br>
+        <h3>translacije :</h3>
+        
+        <button onclick="translate1(1,0,0);izris();">gor</button>
+        <button onclick="translate1(-1,0,0);izris();">dol</button>
+        <button onclick="translate1(0,-1,0);izris();">levo</button>
+        <button onclick="translate1(0,1,0);izris();">desno</button>
+        <button onclick="translate1(0,0,1);izris();">naprej</button>
+        <button onclick="translate1(0,0,-1);izris();">nazaj</button>
+        <br>
     </div>
 
-    <h1 id="text"></h1>
-    <h1 id="text2"></h1>
+
+
+    <div class="canvas" style="position: relative; float: left; width: 60%;">
+            <canvas class="canvas" id="platno" width="1000" height="700" style="border:1px solid #000000;"></canvas>
+    </div>
+  
+
     <script type="text/javascript" src="./cevovod.js"></script>
 </body>
 
